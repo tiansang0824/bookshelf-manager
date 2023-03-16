@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tian.mappers.BookMapper">
+
+    <resultMap id="bookResultMap" type="book">
+        <id column="bookid" property="bookId"/>
+        <result column="bookname" property="bookName"/>
+        <result column="bookauthor" property="bookAuthor"/>
+        <result column="bookdescription" property="bookDescription"/>
+    </resultMap>
+    <insert id="addBook">
+        insert into books (bookid, bookname, bookauthor, bookdescription) VALUE (#{bookId}, #{bookName}, #{bookAuthor}, #{bookDescription})
+    </insert>
+    <update id="editBook">
+        update books set bookname = #{bookName}, bookauthor = #{bookAuthor}, bookdescription = #{bookDescription} where bookid = #{bookId}
+    </update>
+    <select id="selectAllBooks" resultMap="bookResultMap">
+        select *
+        from books;
+    </select>
+    <select id="selectOne" resultMap="bookResultMap">
+        select *
+        from books
+        where bookid = #{bookId}
+    </select>
+</mapper>
