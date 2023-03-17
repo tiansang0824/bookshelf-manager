@@ -1,22 +1,35 @@
 package org.tian.pojo;
 
 public class Book {
+    /**
+     * 下面是一个book所需要的全部属性。
+     * 特殊说明，当userid为0或者null的时候，说明没有人使用该book。
+     */
     private int bookId;
     private String bookName;
     private String bookAuthor;
     private String bookDescription;
+    private int userId;
 
     public Book() {
     }
 
     /*包含id的构造函数*/
-    public Book(int bookid, String bookName, String bookAuthor, String bookDescription) {
-        this.bookId = bookid;
+    public Book(int bookId, String bookName, String bookAuthor, String bookDescription,int userId) {
+        this.bookId = bookId;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.bookDescription = bookDescription;
+        this.userId = userId;
     }
-
+    /*包含除了userId以外的全部参数。*/
+    public Book(int bookId, String bookName, String bookAuthor, String bookDescription) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookDescription = bookDescription;
+        userId = 0;
+    }
     /*不包含id的构造函数
     * 该函数仅用于添加book对象信息到数据库的时候使用，请注意使用场合。
     * */
@@ -33,6 +46,7 @@ public class Book {
                 ", bookName='" + bookName + '\'' +
                 ", bookAuthor='" + bookAuthor + '\'' +
                 ", bookDescription='" + bookDescription + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 
@@ -67,4 +81,13 @@ public class Book {
     public void setBookDescription(String bookDescription) {
         this.bookDescription = bookDescription;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
 }

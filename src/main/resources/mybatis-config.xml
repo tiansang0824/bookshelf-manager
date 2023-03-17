@@ -20,8 +20,6 @@
         </environment>
     </environments>
 
-
-
     <mappers>
         <package name="org.tian.mappers"/>
     </mappers>

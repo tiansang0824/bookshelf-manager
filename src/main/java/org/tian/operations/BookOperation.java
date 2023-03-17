@@ -1,11 +1,13 @@
-package org.tian.bookOperations;
+package org.tian.operations;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.tian.mappers.BookMapper;
+import org.tian.mappers.UserMapper;
 import org.tian.pojo.Book;
+import org.tian.pojo.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -103,6 +105,36 @@ public class BookOperation {
             mapper.editBook(book);
             session.commit();
             System.out.println("编辑成功。");
+        }
+
+        System.out.println("下面是新的全部book信息，请注意对应id的book信息是否修改完成。");
+
+        selectAll();
+    }
+
+    /**
+     * 为book绑定一个user。
+     * @param book 等待绑定的book
+     * @param user 等待绑定的user。
+     * @throws IOException 抛出异常。
+     */
+    // TODO:【为book绑定user的函数】代码有待完善，比如user是否已经存在，或者是否必须添加新的user，等情况，都还没有解决。
+    public void boundUser(Book book, User user) throws IOException {
+
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            mapper.addUser(user);
+            int userid = user.getUserId();
+            System.out.println("新添加的user是：" + userid); // 输出一下刚刚添加的userID。
+            book.setUserId(userid);
+            BookMapper bookMapper = session.getMapper(BookMapper.class);
+            bookMapper.addBook(book);
+            session.commit();
+            System.out.println("新添加的book是："+book.getBookId());
         }
 
         System.out.println("下面是新的全部book信息，请注意对应id的book信息是否修改完成。");
