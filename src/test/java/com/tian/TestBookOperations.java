@@ -33,8 +33,6 @@ public class TestBookOperations {
                 books) {
             System.out.println(book);
         }
-
-
     }
 
     @Test
