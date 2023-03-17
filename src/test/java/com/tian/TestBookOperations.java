@@ -11,7 +11,6 @@ import org.tian.pojo.Book;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Random;
 
 public class TestBookOperations {
     /*
@@ -23,7 +22,7 @@ public class TestBookOperations {
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
-        List<Book> books = null;
+        List<Book> books;
 
         try (SqlSession session = sqlSessionFactory.openSession()) {
             BookMapper mapper = session.getMapper(BookMapper.class);
@@ -45,8 +44,6 @@ public class TestBookOperations {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        Book book = null;
 
         try (SqlSession session = sqlSessionFactory.openSession()) {
             BookMapper mapper = session.getMapper(BookMapper.class);
