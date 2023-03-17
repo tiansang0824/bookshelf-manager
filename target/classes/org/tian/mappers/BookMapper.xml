@@ -11,10 +11,11 @@
         <result column="bookdescription" property="bookDescription"/>
     </resultMap>
     <insert id="addBook" useGeneratedKeys="true" keyProperty="bookId">
-        insert into books (bookid, bookname, bookauthor, bookdescription) VALUE (#{bookId}, #{bookName}, #{bookAuthor}, #{bookDescription})
+        insert into books (bookid, bookname, bookauthor, bookdescription, userid)
+            VALUE (#{bookId}, #{bookName}, #{bookAuthor}, #{bookDescription}, #{userId})
     </insert>
     <update id="editBook">
-        update books set bookname = #{bookName}, bookauthor = #{bookAuthor}, bookdescription = #{bookDescription} where bookid = #{bookId}
+        update books set bookname = #{bookName}, bookauthor = #{bookAuthor}, bookdescription = #{bookDescription}, userId=#{userId} where bookid = #{bookId}
     </update>
     <select id="selectAllBooks" resultMap="bookResultMap">
         select *
