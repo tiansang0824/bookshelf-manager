@@ -57,8 +57,7 @@ public class TestBookOperations {
 
     @Test
     public void testAddBook() throws IOException {
-        Book book = new Book(new Random().nextInt() / 100000,"这是一个书名", "我叫作者", "我是描述");
-
+        Book book = new Book("这是一个书名", "我叫作者", "我是描述");
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -66,7 +65,7 @@ public class TestBookOperations {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             BookMapper mapper = session.getMapper(BookMapper.class);
             mapper.addBook(book);
-            System.out.println("添加成功。");
+            System.out.println("添加成功。"+book.getBookId()); // 返回主键
             session.commit();
         }
 

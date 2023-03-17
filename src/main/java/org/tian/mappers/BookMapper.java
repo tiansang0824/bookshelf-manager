@@ -12,7 +12,7 @@ public interface BookMapper {
     Book selectOne(int bookId);
 
     /*按照填入的数据在书架上添加一本书。*/
-    void addBook(Book newBook);
+    int addBook(Book newBook);
 
     /*修改指定id的book的信息。*/
     void editBook(Book book);

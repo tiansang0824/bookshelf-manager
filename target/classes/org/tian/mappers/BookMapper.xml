@@ -10,7 +10,7 @@
         <result column="bookauthor" property="bookAuthor"/>
         <result column="bookdescription" property="bookDescription"/>
     </resultMap>
-    <insert id="addBook">
+    <insert id="addBook" useGeneratedKeys="true" keyProperty="bookId">
         insert into books (bookid, bookname, bookauthor, bookdescription) VALUE (#{bookId}, #{bookName}, #{bookAuthor}, #{bookDescription})
     </insert>
     <update id="editBook">
