@@ -30,7 +30,7 @@ public class BookOperation {
      * 选择全部book数据。
      * @throws IOException 抛出一个io异常。
      */
-    public void selectAll() throws IOException {
+    public List<Book> selectAll() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -46,6 +46,8 @@ public class BookOperation {
                 books) {
             System.out.println(book);
         }
+
+        return books;
     }
 
     /**
@@ -53,16 +55,20 @@ public class BookOperation {
      * @param bookId bookId
      * @throws IOException 抛出io异常。
      */
-    public void selectOne(int bookId) throws IOException {
+    public Book selectOne(int bookId) throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
+        Book book1 = null;
+
         try (SqlSession session = sqlSessionFactory.openSession()) {
             BookMapper mapper = session.getMapper(BookMapper.class);
-            Book book1 = mapper.selectOne(bookId);
+            book1 = mapper.selectOne(bookId);
             System.out.println(book1);
         }
+
+        return book1;
     }
     /**
      * 添加新的book到书架。
@@ -70,7 +76,7 @@ public class BookOperation {
      * @param book 封装了new book信息的book对象。
      * @throws IOException 抛出异常。
      */
-    public void testAddBook(Book book) throws IOException {
+    public void addBook(Book book) throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -94,7 +100,7 @@ public class BookOperation {
      * @param book 封装了新信息的book对象。
      * @throws IOException 抛出异常。
      */
-    public void testEditBook (Book book) throws IOException {
+    public void EditBook (Book book) throws IOException {
 
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);

@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mybatis-bookshelf-manager:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/mybatis_bookshelf_manager_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="mybatis-bookshelf-manager/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mybatis-bookshelf-manager" />
+        </element>
+      </element>
+      <element id="library" level="project" name="Maven: junit:junit:4.13.2" />
+      <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.13" />
+      <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.32" />
+    </root>
+  </artifact>
+</component>

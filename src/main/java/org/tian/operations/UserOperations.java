@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class userOperations {
+public class UserOperations {
 
     public void SelectAll() throws IOException {
         String resource = "mybatis-config.xml";

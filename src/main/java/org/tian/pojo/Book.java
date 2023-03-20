@@ -39,6 +39,13 @@ public class Book {
         this.bookDescription = bookDescription;
     }
 
+    public Book(String bookName, String bookAuthor, String bookDescription, int userId) {
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookDescription = bookDescription;
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
