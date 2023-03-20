@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.tian.mappers.BookMapper;
 import org.tian.operations.BookOperation;
 import org.tian.pojo.Book;
+import org.tian.pojo.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,7 +87,13 @@ public class BookServlet extends HttpServlet {
             Book book = new Book(bookId, bookName, bookAuthor, bookDescription, 1);
             System.out.println(book);
 
-            // todo: 函数没写完，写完这个完工。
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            String userName = request.getParameter("userName");
+            User user = new User(userId, userName);
+
+            bookOperation.boundUser(book, user);
+
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
 
 

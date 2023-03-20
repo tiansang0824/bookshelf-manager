@@ -64,7 +64,7 @@
     <tr>
         <td>06</td>
         <td>book</td>
-        <td><a href="">绑定使用人</a></td>
+        <td><a href="./pages/bookBound.jsp">绑定使用人</a></td>
     </tr>
     <tr>
         <td>07</td>
